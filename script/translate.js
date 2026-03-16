@@ -25,8 +25,27 @@ const i18n = {
         title: "Sistema de E-commerce",
         desc: "Projeto de carrinho de compras com regras de negócio, validações e backend estruturado."
       },
+      taquaralto: {
+        title: "Projeto Taquaralto",
+        desc: "Sistema SaaS para rastreamento de sono, fitness e gestão esportiva."
+      },
+      bi: { title: "Projetos de <span>Dados & BI</span>" },
+      pythonDash: {
+        title: "Dashboard em Python",
+        desc: "Análise de indicadores com visualização interativa usando Python."
+      },
+      pbi: {
+        title: "Power BI Dashboard",
+        desc: "Dashboard estratégico com KPIs e análise visual (prints disponíveis)."
+      },
+      pbi2: {
+        title: "Novo Dashboard Power BI",
+        desc: "Análise avançada de indicadores estratégicos (imagem em breve)."
+      },
       view: "Ver projeto →",
-      repo: "Ver repositório →"
+      repo: "Ver repositório →",
+      viewImages: "Ver imagens →",
+      comingSoon: "Em breve →"
     },
 
     about: {
@@ -35,7 +54,7 @@ const i18n = {
       profile: {
         title: "👨‍💻 Perfil Profissional",
         text:
-          "Sou Desenvolvedor com foco em criação de aplicações web, automações e integrações de sistemas. Desenvolvo soluções eficientes, escaláveis e orientadas a negócio."
+          "Sou <strong>Desenvolvedor</strong> com foco em criação de aplicações web, automações e integrações de sistemas. Desenvolvo soluções eficientes, escaláveis e orientadas a negócio, utilizando boas práticas e tecnologias modernas."
       },
 
       dev: {
@@ -48,6 +67,7 @@ const i18n = {
 
       data: {
         title: "📊 Dados",
+        text: "Utilizo dados como base para apoiar soluções de software, otimizar processos e gerar indicadores confiáveis.",
         item1: "Manipulação e análise com Python (Pandas)",
         item2: "Consultas SQL (MySQL, PostgreSQL)",
         item3: "Integração de dados entre sistemas"
@@ -55,6 +75,7 @@ const i18n = {
 
       bi: {
         title: "📈 Business Intelligence",
+        text: "Desenvolvimento de dashboards e indicadores que transformam dados técnicos em informações claras para tomada de decisão.",
         item1: "Dashboards em Power BI e Python",
         item2: "Definição de KPIs",
         item3: "Apoio à gestão e estratégia"
@@ -71,7 +92,7 @@ const i18n = {
       education: {
         title: "🎓 Formação",
         text:
-          "<strong>Sistemas para Internet</strong> – IFTO (Cursando)<br><strong>Técnico em Informática</strong> – IFTO<br>Inglês e Espanhol – Intermediário"
+          "<strong>Sistemas para Internet</strong> – IFTO (Concluído 2025)<br><strong>Técnico em Informática</strong> – IFTO<br>Inglês e Espanhol – Intermediário"
       },
 
       footer:
@@ -88,7 +109,7 @@ const i18n = {
       badge: "WEB DEVELOPMENT & DATA",
       title: "Hi, I'm <span>Marcos Vinícius</span>",
       subtitle:
-        "IT Developer focused on Web Development, Automation and Data Analysis. I build modern digital solutions, strategic dashboards and smart automations.",
+        "IT Analyst focused on Web Development, Automation and Data Analysis. I build modern digital solutions, strategic dashboards and smart automations.",
       btnProjects: "View Projects",
       btnResume: "Resume"
     },
@@ -107,8 +128,27 @@ const i18n = {
         title: "E-commerce System",
         desc: "Shopping cart project with business rules, validations and structured backend."
       },
+      taquaralto: {
+        title: "Taquaralto Project",
+        desc: "SaaS system for sleep tracking, fitness and sports management."
+      },
+      bi: { title: "<span>Data & BI</span> Projects" },
+      pythonDash: {
+        title: "Python Dashboard",
+        desc: "Indicator analysis with interactive visualization using Python."
+      },
+      pbi: {
+        title: "Power BI Dashboard",
+        desc: "Strategic dashboard with KPIs and visual analysis (screenshots available)."
+      },
+      pbi2: {
+        title: "New Power BI Dashboard",
+        desc: "Advanced strategic indicators analysis (image coming soon)."
+      },
       view: "View project →",
-      repo: "View repository →"
+      repo: "View repository →",
+      viewImages: "View images →",
+      comingSoon: "Coming soon →"
     },
 
     about: {
@@ -117,7 +157,7 @@ const i18n = {
       profile: {
         title: "👨‍💻 Professional Profile",
         text:
-          "I am a Developer focused on building web applications, automations and system integrations. I develop efficient, scalable and business-oriented solutions."
+          "I am a <strong>Developer</strong> focused on building web applications, automations and system integrations. I develop efficient, scalable and business-oriented solutions using best practices and modern technologies."
       },
 
       dev: {
@@ -130,6 +170,7 @@ const i18n = {
 
       data: {
         title: "📊 Data",
+        text: "I use data as a basis to support software solutions, optimize processes and generate reliable indicators.",
         item1: "Data manipulation and analysis with Python (Pandas)",
         item2: "SQL queries (MySQL, PostgreSQL)",
         item3: "Data integration between systems"
@@ -137,6 +178,7 @@ const i18n = {
 
       bi: {
         title: "📈 Business Intelligence",
+        text: "Development of dashboards and indicators that transform technical data into clear information for decision making.",
         item1: "Dashboards in Power BI and Python",
         item2: "KPI definition",
         item3: "Management and strategic support"
@@ -153,7 +195,7 @@ const i18n = {
       education: {
         title: "🎓 Education",
         text:
-          "<strong>Internet Systems</strong> – IFTO (In progress)<br><strong>IT Technician</strong> – IFTO<br>English and Spanish – Intermediate"
+          "<strong>Internet Systems</strong> – IFTO (Graduated 2025)<br><strong>IT Technician</strong> – IFTO<br>English and Spanish – Intermediate"
       },
 
       footer:
