@@ -2,6 +2,12 @@ let currentLang = localStorage.getItem("lang") || "pt";
 
 const i18n = {
   pt: {
+    nav: {
+      projects: "Projetos",
+      github: "GitHub",
+      about: "Sobre"
+    },
+
     header: {
       badge: "DESENVOLVIMENTO WEB & DADOS",
       title: "Olá, eu sou <span>Marcos Vinícius</span>",
@@ -12,7 +18,10 @@ const i18n = {
     },
 
     projects: {
-      web: { title: "Projetos de <span>Desenvolvimento Web</span>" },
+      web: {
+        title: "Projetos de <span>Desenvolvimento Web</span>",
+        lead: "Entregas em front-end e sistemas web, com repositórios públicos atualizados direto do GitHub na mesma grade."
+      },
       barber: {
         title: "Landing Page Barbearia",
         desc: "Landing page moderna e responsiva, focada em conversão e identidade visual premium."
@@ -29,7 +38,14 @@ const i18n = {
         title: "Projeto Taquaralto",
         desc: "Sistema SaaS para rastreamento de sono, fitness e gestão esportiva."
       },
-      bi: { title: "Projetos de <span>Dados & BI</span>" },
+      gustavo: {
+        title: "Site Gustavo Arquiteto",
+        desc: "Landing institucional com layout refinado para escritório de arquitetura e portfólio visual."
+      },
+      bi: {
+        title: "Projetos de <span>Dados & BI</span>",
+        lead: "Visualização, indicadores e automações orientadas a dados."
+      },
       pythonDash: {
         title: "Dashboard em Python",
         desc: "Análise de indicadores com visualização interativa usando Python."
@@ -42,14 +58,31 @@ const i18n = {
         title: "Novo Dashboard Power BI",
         desc: "Análise avançada de indicadores estratégicos (imagem em breve)."
       },
+      futsalPerf: {
+        title: "Futsal Performance",
+        desc: "Scripts e análises em Python voltados a desempenho e dados de futsal."
+      },
+      sicon: {
+        title: "Automação Sicon — Estoque",
+        desc: "Automação em Python para fluxos de estoque integrados a sistemas corporativos."
+      },
       view: "Ver projeto →",
       repo: "Ver repositório →",
       viewImages: "Ver imagens →",
       comingSoon: "Em breve →"
     },
 
+    repos: {
+      title: "Atividade no <span>GitHub</span>",
+      lead: "Repositórios públicos sincronizados com a API do GitHub, ordenados por atualização recente.",
+      loading: "Carregando repositórios…",
+      error: "Não foi possível carregar os repositórios agora. Tente mais tarde.",
+      all: "Ver todos os repositórios no GitHub →"
+    },
+
     about: {
       title: "Sobre <span>Mim</span>",
+      lead: "Experiência em desenvolvimento, dados e inteligência de negócio aplicada a problemas reais.",
 
       profile: {
         title: "👨‍💻 Perfil Profissional",
@@ -105,6 +138,12 @@ const i18n = {
   },
 
   en: {
+    nav: {
+      projects: "Projects",
+      github: "GitHub",
+      about: "About"
+    },
+
     header: {
       badge: "WEB DEVELOPMENT & DATA",
       title: "Hi, I'm <span>Marcos Vinícius</span>",
@@ -115,7 +154,10 @@ const i18n = {
     },
 
     projects: {
-      web: { title: "Web <span>Projects</span>" },
+      web: {
+        title: "Web <span>Projects</span>",
+        lead: "Front-end and web systems, plus public GitHub repositories kept in sync in the same grid."
+      },
       barber: {
         title: "Barbershop Landing Page",
         desc: "Modern and responsive landing page focused on conversion and premium visual identity."
@@ -132,7 +174,14 @@ const i18n = {
         title: "Taquaralto Project",
         desc: "SaaS system for sleep tracking, fitness and sports management."
       },
-      bi: { title: "<span>Data & BI</span> Projects" },
+      gustavo: {
+        title: "Gustavo Architect Website",
+        desc: "Institutional landing with a refined layout for an architecture studio and visual portfolio."
+      },
+      bi: {
+        title: "<span>Data & BI</span> Projects",
+        lead: "Visualization, KPIs and data-driven automations."
+      },
       pythonDash: {
         title: "Python Dashboard",
         desc: "Indicator analysis with interactive visualization using Python."
@@ -145,14 +194,31 @@ const i18n = {
         title: "New Power BI Dashboard",
         desc: "Advanced strategic indicators analysis (image coming soon)."
       },
+      futsalPerf: {
+        title: "Futsal Performance",
+        desc: "Python scripts and analytics focused on futsal performance and data."
+      },
+      sicon: {
+        title: "Sicon Stock Automation",
+        desc: "Python automation for inventory workflows integrated with corporate systems."
+      },
       view: "View project →",
       repo: "View repository →",
       viewImages: "View images →",
       comingSoon: "Coming soon →"
     },
 
+    repos: {
+      title: "GitHub <span>Activity</span>",
+      lead: "Public repositories pulled from the GitHub API, sorted by recent updates.",
+      loading: "Loading repositories…",
+      error: "Repositories could not be loaded right now. Please try again later.",
+      all: "View all repositories on GitHub →"
+    },
+
     about: {
       title: "About <span>Me</span>",
+      lead: "Experience across development, data and business intelligence applied to real problems.",
 
       profile: {
         title: "👨‍💻 Professional Profile",
@@ -224,7 +290,11 @@ function applyTranslations() {
   document.documentElement.lang = currentLang;
   document.getElementById("langToggle").innerText =
     currentLang === "pt" ? "EN" : "PT";
+
+  document.dispatchEvent(new CustomEvent("langChanged", { detail: { lang: currentLang } }));
 }
+
+window.applyTranslations = applyTranslations;
 
 /* ===============================
    BOTÃO DE TROCA
