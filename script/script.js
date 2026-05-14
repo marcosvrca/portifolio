@@ -100,20 +100,21 @@
       .replace(/'/g, "%27");
   }
 
-  function buildLinksHtml(repo) {
+  function buildIconRowHtml(repo) {
     const home = normalizeUrl(repo.homepage || "");
     const repoUrl = repo.html_url || "";
+    const parts = [];
     if (home) {
-      return `
-        <div class="card-links">
-          <a href="${attrHref(home)}" target="_blank" rel="noopener noreferrer"><span data-i18n="projects.view">Ver projeto →</span></a>
-          <a href="${attrHref(repoUrl)}" target="_blank" rel="noopener noreferrer"><span data-i18n="projects.repo">Ver repositório →</span></a>
-        </div>`;
+      parts.push(
+        `<a href="${attrHref(home)}" class="card-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Site" title="Site"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>`
+      );
     }
-    return `
-        <div class="card-links">
-          <a href="${attrHref(repoUrl)}" target="_blank" rel="noopener noreferrer"><span data-i18n="projects.repo">Ver repositório →</span></a>
-        </div>`;
+    if (repoUrl) {
+      parts.push(
+        `<a href="${attrHref(repoUrl)}" class="card-icon-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>`
+      );
+    }
+    return `<div class="card-icon-row">${parts.join("")}</div>`;
   }
 
   async function loadGithubWebRepos() {
@@ -150,7 +151,9 @@
         `;
 
         const card = document.createElement("article");
-        card.className = "card gh-repo-card timeline-card";
+        const tone = index % 5;
+        card.className = "card gh-repo-card timeline-card project-card";
+        card.dataset.mediaTone = String(tone);
         const title = formatRepoTitle(repo.name);
         const desc =
           repo.description && repo.description.trim()
@@ -168,11 +171,14 @@
 
         card.dataset.updated = repo.pushed_at || repo.updated_at || "";
         card.innerHTML = `
-          <h3>${escapeHtml(title)}</h3>
-          <p>${desc}</p>
-          <div class="tags">${langTag}${ghTag}</div>
-          <div class="gh-repo-meta">${stars}${updated}</div>
-          ${buildLinksHtml(repo)}
+          <div class="card-media" aria-hidden="true"></div>
+          <div class="card-body">
+            <h3>${escapeHtml(title)}</h3>
+            <p>${desc}</p>
+            <div class="tags">${langTag}${ghTag}</div>
+            <div class="gh-repo-meta">${stars}${updated}</div>
+          </div>
+          ${buildIconRowHtml(repo)}
         `;
 
         if (index % 2 === 0) {
