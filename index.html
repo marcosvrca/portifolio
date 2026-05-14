@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <canvas id="matrixRain" class="matrix-rain-canvas" aria-hidden="true"></canvas>
+  <div class="page-shell">
   <div class="social-fixed" aria-label="Redes sociais">
     <a href="https://instagram.com/marcos.vrca" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
@@ -32,7 +34,7 @@
     </ul>
   </nav>
 
-  <header>
+  <header class="site-hero">
     <div class="hero-inner">
       <span class="badge" data-i18n="header.badge">DESENVOLVIMENTO WEB & DADOS</span>
       <h1 data-i18n="header.title">Olá, eu sou <span>Marcos Vinícius</span></h1>
@@ -52,10 +54,10 @@
     <button type="button" id="langToggle" class="lang-switch" aria-label="Alternar idioma">EN</button>
   </header>
 
-  <section id="projetos">
+  <section id="projetos" class="page-section">
     <h2 class="section-title" data-i18n="projects.web.title">Projetos de <span>Desenvolvimento Web</span></h2>
     <p class="section-lead" data-i18n="projects.web.lead">Seleção de entregas em front-end, sistemas web e experiências publicadas.</p>
-    <div class="grid" id="web-projects-grid">
+    <div class="grid projects-grid" id="web-projects-grid">
       <div class="card">
         <h3 data-i18n="projects.barber.title">Landing Page Barbearia</h3>
         <p data-i18n="projects.barber.desc">Landing page moderna e responsiva, focada em conversão e identidade visual premium.</p>
@@ -114,18 +116,12 @@
           <a href="https://github.com/marcosvrca/proejto-taquaralto" target="_blank" rel="noopener noreferrer" data-i18n="projects.repo">Ver repositório →</a>
         </div>
       </div>
-
-      <p id="github-web-loading" class="github-web-loading" data-i18n="repos.loading" aria-live="polite">Carregando repositórios…</p>
     </div>
-    <p class="repos-footer web-repos-footer">
-      <a href="https://github.com/marcosvrca?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="repos.all">Ver todos os repositórios no GitHub →</a>
-    </p>
   </section>
 
-  <section>
+  <section class="page-section" id="projetos-dados">
     <h2 class="section-title" data-i18n="projects.bi.title">Projetos de <span>Dados & BI</span></h2>
-    <p class="section-lead" data-i18n="projects.bi.lead">Visualização, indicadores e automações orientadas a dados.</p>
-    <div class="grid">
+    <div class="grid projects-grid">
       <div class="card">
         <h3 data-i18n="projects.pythonDash.title">Dashboard em Python</h3>
         <p data-i18n="projects.pythonDash.desc">Análise de indicadores com visualização interativa usando Python.</p>
@@ -184,12 +180,22 @@
     </div>
   </section>
 
-  <section id="curriculo">
-    <h2 class="section-title" data-i18n="about.title">Sobre <span>Mim</span></h2>
-    <p class="section-lead" data-i18n="about.lead">Experiência em desenvolvimento, dados e inteligência de negócio aplicada a problemas reais.</p>
+  <section id="projetos-github" class="page-section github-section" aria-label="Repositórios GitHub">
+    <p id="github-web-loading" class="github-web-loading" data-i18n="repos.loading" aria-live="polite">Carregando repositórios…</p>
+    <div class="github-timeline" id="github-timeline" aria-label="Repositórios GitHub"></div>
+    <p class="repos-footer web-repos-footer">
+      <a href="https://github.com/marcosvrca?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="repos.all">Ver todos os repositórios no GitHub →</a>
+    </p>
+  </section>
 
-    <div class="grid">
-      <div class="card">
+  <section id="curriculo" class="page-section about-section">
+    <header class="about-intro">
+      <h2 class="section-title about-title" data-i18n="about.title">Sobre <span>Mim</span></h2>
+      <p class="section-lead about-lead" data-i18n="about.lead">Experiência em desenvolvimento, dados e inteligência de negócio aplicada a problemas reais.</p>
+    </header>
+
+    <div class="grid about-grid">
+      <article class="card about-card about-card--hero">
         <h3 data-i18n="about.profile.title">👨‍💻 Perfil Profissional</h3>
         <p data-i18n="about.profile.text">
           Sou <strong>Desenvolvedor</strong> com foco em criação de aplicações web,
@@ -197,9 +203,9 @@
           Desenvolvo soluções eficientes, escaláveis e orientadas a negócio,
           utilizando boas práticas e tecnologias modernas.
         </p>
-      </div>
+      </article>
 
-      <div class="card">
+      <article class="card about-card">
         <h3 data-i18n="about.dev.title">🚀 Desenvolvimento</h3>
         <ul>
           <li data-i18n="about.dev.item1">Aplicações web e sistemas internos</li>
@@ -207,9 +213,9 @@
           <li data-i18n="about.dev.item3">Automações com Python e Power Automate</li>
           <li data-i18n="about.dev.item4">Landing pages e interfaces responsivas</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="card">
+      <article class="card about-card">
         <h3 data-i18n="about.data.title">📊 Dados</h3>
         <p data-i18n="about.data.text">
           Utilizo dados como base para apoiar soluções de software,
@@ -220,9 +226,9 @@
           <li data-i18n="about.data.item2">Consultas SQL (MySQL, PostgreSQL)</li>
           <li data-i18n="about.data.item3">Integração de dados entre sistemas</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="card">
+      <article class="card about-card">
         <h3 data-i18n="about.bi.title">📈 Business Intelligence</h3>
         <p data-i18n="about.bi.text">
           Desenvolvimento de dashboards e indicadores que transformam
@@ -233,9 +239,9 @@
           <li data-i18n="about.bi.item2">Definição de KPIs</li>
           <li data-i18n="about.bi.item3">Apoio à gestão e estratégia</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="card">
+      <article class="card about-card">
         <h3 data-i18n="about.stack.title">🛠️ Stack Principal</h3>
         <ul>
           <li data-i18n="about.stack.dev"><strong>Dev:</strong> HTML, CSS, JavaScript, Java, Python, Spring Boot</li>
@@ -243,19 +249,19 @@
           <li data-i18n="about.stack.bi"><strong>BI:</strong> Power BI, Dashboards em Python</li>
           <li data-i18n="about.stack.auto"><strong>Automação:</strong> Power Automate, n8n</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="card">
+      <article class="card about-card about-card--hero">
         <h3 data-i18n="about.education.title">🎓 Formação</h3>
         <p data-i18n="about.education.text">
           <strong>Sistemas para Internet</strong> – IFTO (Concluído 2025)<br>
           <strong>Técnico em Informática</strong> – IFTO<br>
           Inglês e Espanhol – Intermediário
         </p>
-      </div>
+      </article>
     </div>
 
-    <p style="margin-top:48px;color:#94a3b8;text-align:center;max-width:640px;margin-left:auto;margin-right:auto;font-size:0.95rem" data-i18n="about.footer">
+    <p class="section-outro about-outro" data-i18n="about.footer">
       Busco oportunidades como desenvolvedor, onde possa criar soluções,
       automatizar processos e utilizar dados para gerar valor real ao negócio.
     </p>
@@ -264,6 +270,8 @@
   <footer>
     <p data-i18n="footer.text">© 2026 Marcos Vinícius • Todos os direitos reservados</p>
   </footer>
+  </div>
+  <script src="script/matrix-rain.js"></script>
   <script src="script/translate.js"></script>
   <script src="script/script.js"></script>
 </body>

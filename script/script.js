@@ -71,6 +71,13 @@
     return true;
   }
 
+  /** Data do último push (código); GitHub também expõe updated_at (qualquer atividade no repo). */
+  function repoActivityDate(repo) {
+    const raw = repo.pushed_at || repo.updated_at || "";
+    const t = new Date(raw).getTime();
+    return Number.isNaN(t) ? 0 : t;
+  }
+
   function normalizeUrl(raw) {
     if (!raw || typeof raw !== "string") return "";
     const t = raw.trim();
@@ -110,23 +117,40 @@
   }
 
   async function loadGithubWebRepos() {
-    const grid = document.getElementById("web-projects-grid");
+    const timeline = document.getElementById("github-timeline");
     const loadingEl = document.getElementById("github-web-loading");
-    if (!grid) return;
+    if (!timeline) return;
 
     try {
       const res = await fetch(
-        `https://api.github.com/users/${GH_USER}/repos?per_page=40&sort=updated&type=owner`
+        `https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=pushed&direction=desc&type=owner`
       );
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const repos = await res.json();
-      const list = repos.filter(isWebGridRepo).slice(0, MAX_REPOS);
+      // Ordenar por último push antes de filtrar e limitar — evita ficar só com repos antigos
+      // quando o slice era aplicado antes do sort.
+      const sorted = [...repos].sort(
+        (a, b) => repoActivityDate(b) - repoActivityDate(a)
+      );
+      const list = sorted.filter(isWebGridRepo).slice(0, MAX_REPOS);
 
       if (loadingEl) loadingEl.remove();
 
-      list.forEach((repo) => {
+      list.forEach((repo, index) => {
+        const row = document.createElement("div");
+        row.className = "timeline-item";
+        const iso = repo.pushed_at || repo.updated_at || "";
+        const dateLabel = formatDate(iso);
+        const rail = document.createElement("div");
+        rail.className = "timeline-rail";
+        rail.setAttribute("aria-hidden", "true");
+        rail.innerHTML = `
+          <time class="timeline-date" datetime="${escapeHtml(iso)}">${escapeHtml(dateLabel)}</time>
+          <span class="timeline-dot"></span>
+        `;
+
         const card = document.createElement("article");
-        card.className = "card gh-repo-card";
+        card.className = "card gh-repo-card timeline-card";
         const title = formatRepoTitle(repo.name);
         const desc =
           repo.description && repo.description.trim()
@@ -140,9 +164,9 @@
           repo.stargazers_count > 0
             ? `<span><i class="fa-regular fa-star" aria-hidden="true"></i> ${repo.stargazers_count}</span>`
             : "";
-        const updated = `<span class="repo-updated"><i class="fa-regular fa-clock" aria-hidden="true"></i> ${formatDate(repo.updated_at)}</span>`;
+        const updated = `<span class="repo-updated"><i class="fa-regular fa-clock" aria-hidden="true"></i> ${formatDate(repo.pushed_at || repo.updated_at)}</span>`;
 
-        card.dataset.updated = repo.updated_at || "";
+        card.dataset.updated = repo.pushed_at || repo.updated_at || "";
         card.innerHTML = `
           <h3>${escapeHtml(title)}</h3>
           <p>${desc}</p>
@@ -150,7 +174,15 @@
           <div class="gh-repo-meta">${stars}${updated}</div>
           ${buildLinksHtml(repo)}
         `;
-        grid.appendChild(card);
+
+        if (index % 2 === 0) {
+          row.appendChild(rail);
+          row.appendChild(card);
+        } else {
+          row.appendChild(card);
+          row.appendChild(rail);
+        }
+        timeline.appendChild(row);
         revealObserver.observe(card);
       });
 
@@ -177,6 +209,12 @@
       if (el && card.dataset.updated) {
         const icon = '<i class="fa-regular fa-clock" aria-hidden="true"></i> ';
         el.innerHTML = icon + formatDate(card.dataset.updated);
+      }
+    });
+    document.querySelectorAll(".timeline-date[datetime]").forEach((el) => {
+      const iso = el.getAttribute("datetime");
+      if (iso) {
+        el.textContent = formatDate(iso);
       }
     });
   });
