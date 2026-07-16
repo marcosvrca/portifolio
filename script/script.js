@@ -12,6 +12,27 @@
   ]);
   const MAX_REPOS = 40;
 
+  /** Preview local por slug do repositório (assets/img) */
+  const REPO_PREVIEW = {
+    "landingpage-barbearia": "assets/img/barbearia.png",
+    "landingpage-recantodafe": "assets/img/recantodafe.png",
+    gustavo_arquiteto: "assets/img/arquitetogustavo.png",
+    carrinho_compras: "assets/img/ecommerce.png",
+    "proejto-taquaralto": "assets/img/taquaraltofutsal.png",
+    "sistemadegestao-vendas-financeiro": "assets/img/sistema-comercial-recantodafe.png",
+    agenda: "assets/img/agenda.png",
+    sistema_de_chamados: "assets/img/sistema-de-chamados.png",
+    pagina_pagamentos: "assets/img/pagina-pagamentos.png",
+    "paroquia-santoantonio": "assets/img/sistema-financeiro-paroquia.png",
+    sistema_financeiro: "assets/img/sistema-financeiro-paroquia.png",
+    "brendo-baterias": "assets/img/brendo-baterias.png",
+    convite_formatura: "assets/img/convite-formatura.png",
+    portifolio: "assets/img/portifolio.png",
+    us: "assets/img/us.png",
+    dash_wadamy: "assets/img/dash.png",
+    "pythondashboard-recantodafe": "assets/img/dash.png",
+  };
+
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -90,6 +111,16 @@
       .replace(/'/g, "%27");
   }
 
+  function buildMediaHtml(repo, title) {
+    const src = REPO_PREVIEW[repo.name];
+    if (!src) {
+      return `<div class="card-media" aria-hidden="true"></div>`;
+    }
+    return `<div class="card-media">
+      <img class="card-media-img" src="${attrHref(src)}" alt="Preview: ${escapeHtml(title)}" width="800" height="450" loading="lazy" decoding="async" />
+    </div>`;
+  }
+
   function buildIconRowHtml(repo) {
     const home = normalizeUrl(repo.homepage || "");
     const repoUrl = repo.html_url || "";
@@ -161,7 +192,7 @@
 
         card.dataset.updated = repo.pushed_at || repo.updated_at || "";
         card.innerHTML = `
-          <div class="card-media" aria-hidden="true"></div>
+          ${buildMediaHtml(repo, title)}
           <div class="card-body">
             <h3>${escapeHtml(title)}</h3>
             <p>${desc}</p>
