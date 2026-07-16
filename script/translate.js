@@ -76,7 +76,7 @@ const i18n = {
       },
       pbi2: {
         title: "Novo Dashboard Power BI",
-        desc: "Análise avançada de indicadores estratégicos (imagem em breve)."
+        desc: "Análise avançada de indicadores estratégicos."
       },
       futsalPerf: {
         title: "Futsal Performance",
@@ -239,7 +239,7 @@ const i18n = {
       },
       pbi2: {
         title: "New Power BI Dashboard",
-        desc: "Advanced strategic indicators analysis (image coming soon)."
+        desc: "Advanced strategic indicators analysis."
       },
       futsalPerf: {
         title: "Futsal Performance",
