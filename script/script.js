@@ -10,15 +10,7 @@
     "teste-myjsonserver",
     "jsonserver",
   ]);
-  /** Repositórios já exibidos como cards fixos acima */
-  const FEATURED_SLUGS = new Set([
-    "landingpage-barbearia",
-    "landingpage-recantodafe",
-    "gustavo_arquiteto",
-    "carrinho_compras",
-    "proejto-taquaralto",
-  ]);
-  const MAX_REPOS = 15;
+  const MAX_REPOS = 40;
 
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -66,8 +58,6 @@
   function isWebGridRepo(repo) {
     if (repo.fork) return false;
     if (EXCLUDE_NAMES.has(repo.name)) return false;
-    if (FEATURED_SLUGS.has(repo.name)) return false;
-    if (repo.language === "Python") return false;
     return true;
   }
 
@@ -224,4 +214,238 @@
       }
     });
   });
+
+  /* —— Experiência imersiva da linha do tempo —— */
+  function initTimelineExperience() {
+    const portal = document.getElementById("projetos-github");
+    const experience = document.getElementById("timeline-experience");
+    const scrollEl = document.getElementById("timeline-experience-scroll");
+    const exitBtn = document.getElementById("timeline-exit");
+    const enterBtn = document.getElementById("timeline-portal-enter");
+    const endSentinel = document.getElementById("timeline-end-sentinel");
+    if (!portal || !experience || !scrollEl || !exitBtn) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ENTER_MS = reduceMotion ? 40 : 420;
+    const READY_MS = reduceMotion ? 60 : 980;
+    const CONTENT_MS = reduceMotion ? 80 : 1500;
+    const LEAVE_MS = reduceMotion ? 40 : 1250;
+
+    let active = false;
+    let locked = false;
+    let leaving = false;
+    let enterTimers = [];
+    let endArmed = false;
+    let endHoldTimer = null;
+    let pendingAutoEnter = null;
+    let lastScrollY = window.scrollY;
+    let scrollingDown = true;
+    const END_HOLD_MS = 7000;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        if (Math.abs(y - lastScrollY) > 2) {
+          scrollingDown = y > lastScrollY;
+        }
+        lastScrollY = y;
+      },
+      { passive: true }
+    );
+
+    function clearEnterTimers() {
+      enterTimers.forEach((id) => clearTimeout(id));
+      enterTimers = [];
+    }
+
+    function clearEndHold() {
+      if (endHoldTimer) {
+        clearTimeout(endHoldTimer);
+        endHoldTimer = null;
+      }
+    }
+
+    function clearPendingAutoEnter() {
+      if (pendingAutoEnter) {
+        clearTimeout(pendingAutoEnter);
+        pendingAutoEnter = null;
+      }
+    }
+
+    function scheduleEndExit() {
+      if (endHoldTimer || !active || leaving || !endArmed) return;
+      endHoldTimer = setTimeout(() => {
+        endHoldTimer = null;
+        if (active && !leaving) {
+          exitTimeline();
+        }
+      }, END_HOLD_MS);
+    }
+
+    function enterTimeline({ fromButton = false } = {}) {
+      if (active || leaving) return;
+      if (locked && !fromButton) return;
+
+      active = true;
+      locked = true;
+      endArmed = false;
+      clearEnterTimers();
+      clearEndHold();
+      clearPendingAutoEnter();
+
+      experience.classList.remove("is-leaving", "is-ready", "show-content");
+      experience.classList.add("is-active", "is-entering");
+      experience.setAttribute("aria-hidden", "false");
+      document.body.classList.add("timeline-mode");
+      document.body.classList.remove("timeline-leaving");
+      portal.classList.add("is-visited");
+      scrollEl.scrollTop = 0;
+
+      enterTimers.push(
+        setTimeout(() => {
+          experience.classList.add("is-ready");
+        }, READY_MS)
+      );
+      enterTimers.push(
+        setTimeout(() => {
+          experience.classList.add("show-content");
+          // Só auto-sai ao fim se houver rolagem real
+          enterTimers.push(
+            setTimeout(() => {
+              const canScroll =
+                scrollEl.scrollHeight > scrollEl.clientHeight + 120;
+              endArmed = canScroll;
+              // Revela cards já visíveis no painel
+              scrollEl.querySelectorAll(".timeline-card.card:not(.show)").forEach((card) => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                  card.classList.add("show");
+                }
+              });
+            }, 400)
+          );
+        }, CONTENT_MS)
+      );
+    }
+
+    function exitTimeline() {
+      if (!active || leaving) return;
+      leaving = true;
+      endArmed = false;
+      clearEnterTimers();
+      clearEndHold();
+      clearPendingAutoEnter();
+
+      // Reinicia as ondas para a animação de colapso
+      experience.classList.remove("is-entering");
+      void experience.offsetWidth;
+
+      experience.classList.add("is-leaving");
+      experience.classList.remove("is-ready", "show-content");
+      document.body.classList.add("timeline-leaving");
+
+      setTimeout(() => {
+        experience.classList.remove("is-active", "is-leaving");
+        experience.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("timeline-mode", "timeline-leaving");
+        scrollEl.scrollTop = 0;
+        active = false;
+        leaving = false;
+        // Mantém locked: não reabre ao voltar pro portfólio
+        locked = true;
+        scrollingDown = false;
+
+        // Volta ao portal — próximo scroll continua no Sobre mim
+        const top =
+          portal.getBoundingClientRect().top +
+          window.scrollY -
+          (parseInt(getComputedStyle(portal).scrollMarginTop, 10) || 88);
+        window.scrollTo({
+          top: Math.max(0, top),
+          behavior: reduceMotion ? "auto" : "smooth",
+        });
+      }, LEAVE_MS);
+    }
+
+    const portalObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            portal.classList.add("is-armed");
+            // Só abre automaticamente ao descer a página
+            if (
+              !active &&
+              !leaving &&
+              !locked &&
+              scrollingDown &&
+              !pendingAutoEnter
+            ) {
+              pendingAutoEnter = setTimeout(() => {
+                pendingAutoEnter = null;
+                if (!active && !leaving && !locked && scrollingDown) {
+                  enterTimeline();
+                }
+              }, ENTER_MS);
+            }
+          } else {
+            portal.classList.remove("is-armed");
+            clearPendingAutoEnter();
+            // Não altera lock enquanto a timeline está aberta / saindo
+            if (active || leaving) return;
+            // Saiu do portal para cima → liberado para entrar no próximo scroll down
+            if (entry.boundingClientRect.top > 0) {
+              locked = false;
+            }
+          }
+        });
+      },
+      { threshold: 0.42, rootMargin: "0px 0px -8% 0px" }
+    );
+    portalObserver.observe(portal);
+
+    if (endSentinel) {
+      const endObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting &&
+              active &&
+              endArmed &&
+              !leaving &&
+              scrollEl.scrollTop > 80
+            ) {
+              // Espera 15s no fim para dar tempo de abrir "ver todos os repositórios"
+              scheduleEndExit();
+            } else if (!entry.isIntersecting) {
+              clearEndHold();
+            }
+          });
+        },
+        { root: scrollEl, threshold: 0.55 }
+      );
+      endObserver.observe(endSentinel);
+    }
+
+    exitBtn.addEventListener("click", () => exitTimeline());
+    if (enterBtn) {
+      enterBtn.addEventListener("click", () => enterTimeline({ fromButton: true }));
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && active) {
+        e.preventDefault();
+        exitTimeline();
+      }
+    });
+
+    // Links âncora para #curriculo / #projetos não devem ficar presos na timeline
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        if (active) exitTimeline();
+      });
+    });
+  }
+
+  initTimelineExperience();
 })();

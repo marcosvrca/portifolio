@@ -42,6 +42,26 @@ const i18n = {
         title: "Site Gustavo Arquiteto",
         desc: "Landing institucional com layout refinado para escritório de arquitetura e portfólio visual."
       },
+      gestao: {
+        title: "Sistema de Gestão Comercial",
+        desc: "Gestão completa de vendas, estoque, caixa e contas a pagar/receber para loja comercial."
+      },
+      agenda: {
+        title: "Agenda — Agendamentos",
+        desc: "Sistema de compromissos pessoais e em grupo, com permissões, arquivos e lembretes via WhatsApp."
+      },
+      chamados: {
+        title: "Sistema de Chamados",
+        desc: "Abertura de chamados via WhatsApp com painel web para agentes, protocolos e acompanhamento."
+      },
+      pagamentos: {
+        title: "Página de Pagamentos",
+        desc: "Interface para cobranças com PIX, boletos, QR Code e exportação de comprovantes em PDF."
+      },
+      paroquia: {
+        title: "Paróquia Santo Antônio",
+        desc: "Sistema web institucional com backend FastAPI, templates e deploy preparado para Railway."
+      },
       bi: {
         title: "Projetos de <span>Dados & BI</span>",
         lead: "Visualização, indicadores e automações orientadas a dados."
@@ -77,7 +97,12 @@ const i18n = {
       lead: "Repositórios públicos sincronizados com a API do GitHub, ordenados por atualização recente.",
       loading: "Carregando repositórios…",
       error: "Não foi possível carregar os repositórios agora. Tente mais tarde.",
-      all: "Ver todos os repositórios no GitHub →"
+      all: "Ver todos os repositórios no GitHub →",
+      introEyebrow: "GitHub",
+      intro: "Acompanhe minha linha do tempo no GitHub",
+      exit: "Sair da linha do tempo",
+      portalHint: "Linha do tempo no GitHub",
+      portalEnter: "Entrar na linha do tempo"
     },
 
     about: {
@@ -116,16 +141,18 @@ const i18n = {
 
       stack: {
         title: "🛠️ Stack Principal",
-        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, Java, Python, Spring Boot",
-        data: "<strong>Dados:</strong> Python, Pandas, SQL, Databricks",
+        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android",
+        data: "<strong>Dados:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks",
         bi: "<strong>BI:</strong> Power BI, Dashboards em Python",
-        auto: "<strong>Automação:</strong> Power Automate, n8n"
+        auto: "<strong>Automação:</strong> Power Automate, n8n",
+        vcs: "<strong>Versionamento:</strong> Git, GitHub, GitLab, Gitea",
+        containers: "<strong>Containers:</strong> Docker, OpenShift, Harbor"
       },
 
       education: {
         title: "🎓 Formação",
         text:
-          "<strong>Sistemas para Internet</strong> – IFTO (Concluído 2025)<br><strong>Técnico em Informática</strong> – IFTO<br>Inglês e Espanhol – Intermediário"
+          "<strong>Técnico em Informática Integrado ao Ensino Médio</strong> – IFTO (Concluído 2019)<br><strong>Sistemas para Internet</strong> – Graduação – IFTO (Concluído 2025)<br><strong>Engenharia de Software</strong> – Pós-Graduação (Cursando)<br>Inglês e Espanhol – Intermediário"
       },
 
       footer:
@@ -178,6 +205,26 @@ const i18n = {
         title: "Gustavo Architect Website",
         desc: "Institutional landing with a refined layout for an architecture studio and visual portfolio."
       },
+      gestao: {
+        title: "Commercial Management System",
+        desc: "Full sales, inventory, cash register and accounts payable/receivable management for a retail store."
+      },
+      agenda: {
+        title: "Agenda — Scheduling",
+        desc: "Personal and group scheduling with permissions, files and WhatsApp reminders."
+      },
+      chamados: {
+        title: "Ticketing System",
+        desc: "WhatsApp ticket intake with a web panel for agents, protocols and follow-up."
+      },
+      pagamentos: {
+        title: "Payments Page",
+        desc: "Billing UI with PIX, boletos, QR Code and PDF receipt export."
+      },
+      paroquia: {
+        title: "Santo Antônio Parish",
+        desc: "Institutional web system with FastAPI backend, templates and Railway-ready deploy."
+      },
       bi: {
         title: "<span>Data & BI</span> Projects",
         lead: "Visualization, KPIs and data-driven automations."
@@ -213,7 +260,12 @@ const i18n = {
       lead: "Public repositories pulled from the GitHub API, sorted by recent updates.",
       loading: "Loading repositories…",
       error: "Repositories could not be loaded right now. Please try again later.",
-      all: "View all repositories on GitHub →"
+      all: "View all repositories on GitHub →",
+      introEyebrow: "GitHub",
+      intro: "Follow my timeline on GitHub",
+      exit: "Exit timeline",
+      portalHint: "GitHub timeline",
+      portalEnter: "Enter the timeline"
     },
 
     about: {
@@ -252,16 +304,18 @@ const i18n = {
 
       stack: {
         title: "🛠️ Main Stack",
-        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, Java, Python, Spring Boot",
-        data: "<strong>Data:</strong> Python, Pandas, SQL, Databricks",
+        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android",
+        data: "<strong>Data:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks",
         bi: "<strong>BI:</strong> Power BI, Python Dashboards",
-        auto: "<strong>Automation:</strong> Power Automate, n8n"
+        auto: "<strong>Automation:</strong> Power Automate, n8n",
+        vcs: "<strong>Version Control:</strong> Git, GitHub, GitLab, Gitea",
+        containers: "<strong>Containers:</strong> Docker, OpenShift, Harbor"
       },
 
       education: {
         title: "🎓 Education",
         text:
-          "<strong>Internet Systems</strong> – IFTO (Graduated 2025)<br><strong>IT Technician</strong> – IFTO<br>English and Spanish – Intermediate"
+          "<strong>Integrated High School IT Technician</strong> – IFTO (Completed 2019)<br><strong>Internet Systems</strong> – Bachelor's – IFTO (Completed 2025)<br><strong>Software Engineering</strong> – Postgraduate (In progress)<br>English and Spanish – Intermediate"
       },
 
       footer:

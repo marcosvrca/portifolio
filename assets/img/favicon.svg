@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Marcos.dev">
+  <rect width="32" height="32" rx="7" fill="#070a12"/>
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#36f372" stroke-opacity="0.35" stroke-width="1"/>
+  <text
+    x="16"
+    y="22"
+    text-anchor="middle"
+    font-family="Segoe UI, Arial, sans-serif"
+    font-size="18"
+    font-weight="800"
+    fill="#36f372"
+  >M</text>
+</svg>
