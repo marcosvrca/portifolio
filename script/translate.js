@@ -3,6 +3,7 @@ let currentLang = localStorage.getItem("lang") || "pt";
 const i18n = {
   pt: {
     nav: {
+      featured: "Destaque",
       projects: "Projetos",
       github: "GitHub",
       about: "Sobre"
@@ -13,8 +14,30 @@ const i18n = {
       title: "Olá, eu sou <span>Marcos Vinícius</span>",
       subtitle:
         "Analista de TI com foco em Desenvolvimento Web, Automação e Análise de Dados. Crio soluções digitais modernas, dashboards estratégicos e automações inteligentes.",
+      btnFeatured: "Ver destaque",
       btnProjects: "Ver Projetos",
       btnResume: "Currículo"
+    },
+
+    featured: {
+      kicker: "Projeto destaque · Código privado",
+      title: "mvGrafix",
+      tagline: "Gestão completa",
+      lead: "ERP em produção para gráficas e quem trabalha com produção: pedidos, pipeline, orçamentos, vendas com BI, financeiro e um módulo de IA que lê a operação em tempo real. Já está em uso por clientes.",
+      point1: "Painel executivo com pedidos ativos, atrasos, urgências e caixa do mês",
+      point2: "Pipeline Kanban da produção (novo → impressão → corte → costura → pronto)",
+      point3: "mvGrafix IA cruza fila, prazos, orçamentos e recebimentos",
+      point4: "Vendas com BI, PDF de orçamento, e-mail de prazos e permissões por módulo",
+      point5: "Alertas por e-mail, integração com WhatsApp e backup via CI/CD com redundância",
+      more: "Ver mais",
+      less: "Ver menos",
+      private: "Repositório privado — sistema em operação com clientes. Prints com dados fictícios.",
+      mod1: { title: "Visão geral", desc: "KPIs de produção e financeiro no mesmo painel." },
+      mod2: { title: "mvGrafix IA", desc: "Leitura da operação: ritmo, funil e o que pede atenção hoje." },
+      mod3: { title: "Pedidos", desc: "Inventário, pipeline, finalizados e novo pedido." },
+      mod4: { title: "Vendas &amp; BI", desc: "Ticket médio, ciclo de recebimento e ranking de clientes." },
+      mod5: { title: "Orçamentos", desc: "Conversão em pedido e PDF pronto para o cliente." },
+      mod6: { title: "Financeiro", desc: "Caixa, recebíveis e notas fiscais com acesso por perfil." }
     },
 
     projects: {
@@ -166,6 +189,7 @@ const i18n = {
 
   en: {
     nav: {
+      featured: "Featured",
       projects: "Projects",
       github: "GitHub",
       about: "About"
@@ -176,8 +200,30 @@ const i18n = {
       title: "Hi, I'm <span>Marcos Vinícius</span>",
       subtitle:
         "IT Analyst focused on Web Development, Automation and Data Analysis. I build modern digital solutions, strategic dashboards and smart automations.",
+      btnFeatured: "See featured",
       btnProjects: "View Projects",
       btnResume: "Resume"
+    },
+
+    featured: {
+      kicker: "Featured project · Private source",
+      title: "mvGrafix",
+      tagline: "Gestão completa",
+      lead: "Production ERP for print shops and anyone running a production floor: orders, pipeline, quotes, sales BI, finance, and an AI module that reads operations in real time. Already in use by clients.",
+      point1: "Executive dashboard with active orders, delays, urgents and monthly cash",
+      point2: "Kanban production pipeline (new → print → cut → sew → ready)",
+      point3: "mvGrafix IA crosses the queue, deadlines, quotes and receivables",
+      point4: "Sales BI, quote PDFs, deadline emails and per-module permissions",
+      point5: "Email alerts, WhatsApp integration and CI/CD backups with redundancy",
+      more: "See more",
+      less: "See less",
+      private: "Private repository — live system used by clients. Screenshots use fictional data.",
+      mod1: { title: "Overview", desc: "Production and finance KPIs in one panel." },
+      mod2: { title: "mvGrafix IA", desc: "Operational readout: pace, funnel and what needs attention today." },
+      mod3: { title: "Orders", desc: "Inventory, pipeline, completed jobs and new order form." },
+      mod4: { title: "Sales &amp; BI", desc: "Average ticket, collection cycle and top customers." },
+      mod5: { title: "Quotes", desc: "Convert to order and export a client-ready PDF." },
+      mod6: { title: "Finance", desc: "Cash, receivables and invoices with role-based access." }
     },
 
     projects: {

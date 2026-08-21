@@ -31,6 +31,7 @@
   <nav class="site-nav">
     <a href="#" class="brand">Marcos<span>.</span>dev</a>
     <ul>
+      <li><a href="#mvgrafix" data-i18n="nav.featured">Destaque</a></li>
       <li><a href="#projetos" data-i18n="nav.projects">Projetos</a></li>
       <li><a href="https://github.com/marcosvrca" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a></li>
       <li><a href="#curriculo" data-i18n="nav.about">Sobre</a></li>
@@ -46,7 +47,8 @@
         Crio soluções digitais modernas, dashboards estratégicos e automações inteligentes.
       </p>
       <div class="actions">
-        <a href="#projetos" class="btn btn-primary" data-i18n="header.btnProjects">Ver Projetos</a>
+        <a href="#mvgrafix" class="btn btn-primary" data-i18n="header.btnFeatured">Ver destaque</a>
+        <a href="#projetos" class="btn btn-outline" data-i18n="header.btnProjects">Ver Projetos</a>
         <a href="#curriculo" class="btn btn-outline" data-i18n="header.btnResume">Currículo</a>
       </div>
       <p class="hero-contact">
@@ -56,6 +58,133 @@
     </div>
     <button type="button" id="langToggle" class="lang-switch" aria-label="Alternar idioma">EN</button>
   </header>
+
+  <section id="mvgrafix" class="page-section featured-section" aria-labelledby="mvgrafix-title">
+    <p class="featured-kicker" data-i18n="featured.kicker">Projeto destaque · Código privado</p>
+    <article class="card featured-project show">
+      <div class="featured-balloon">
+      <div class="featured-layout">
+        <div class="featured-copy">
+          <div class="featured-brand">
+            <img class="featured-logo" src="assets/img/mvgrafix-logo.png" alt="" width="64" height="64" />
+            <div>
+              <h2 id="mvgrafix-title" data-i18n="featured.title">mvGrafix</h2>
+              <p class="featured-tagline" data-i18n="featured.tagline">Gestão completa</p>
+            </div>
+          </div>
+          <p class="featured-lead" data-i18n="featured.lead">
+            ERP em produção para gráficas e quem trabalha com produção: pedidos, pipeline, orçamentos, vendas com BI, financeiro e um módulo de IA que lê a operação em tempo real. Já está em uso por clientes.
+          </p>
+          <div class="featured-more" id="mvgrafix-more">
+            <div class="featured-more-inner">
+              <ul class="featured-points">
+                <li data-i18n="featured.point1">Painel executivo com pedidos ativos, atrasos, urgências e caixa do mês</li>
+                <li data-i18n="featured.point2">Pipeline Kanban da produção (novo → impressão → corte → costura → pronto)</li>
+                <li data-i18n="featured.point3">mvGrafix IA cruza fila, prazos, orçamentos e recebimentos</li>
+                <li data-i18n="featured.point4">Vendas com BI, PDF de orçamento, e-mail de prazos e permissões por módulo</li>
+                <li data-i18n="featured.point5">Alertas por e-mail, integração com WhatsApp e backup via CI/CD com redundância</li>
+              </ul>
+              <div class="tags featured-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Prisma</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Railway</span>
+              </div>
+              <p class="featured-private">
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                <span data-i18n="featured.private">Repositório privado — sistema em operação com clientes. Prints com dados fictícios.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="featured-shots">
+          <a class="featured-shot" href="assets/img/mvgrafix-pedidos.png" target="_blank" rel="noopener noreferrer">
+            <div class="featured-browser">
+              <div class="featured-browser-bar" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <em>mvGrafix · Gestão de pedidos</em>
+              </div>
+              <img
+                src="assets/img/mvgrafix-pedidos.png"
+                alt="Inventário de pedidos do mvGrafix"
+                width="1280"
+                height="640"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </a>
+          <a class="featured-shot" href="assets/img/mvgrafix-pipeline.png" target="_blank" rel="noopener noreferrer">
+            <div class="featured-browser">
+              <div class="featured-browser-bar" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <em>mvGrafix · Pipeline de produção</em>
+              </div>
+              <img
+                src="assets/img/mvgrafix-pipeline.png"
+                alt="Pipeline Kanban de produção do mvGrafix"
+                width="1280"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="featured-modules-wrap">
+      <ul class="featured-modules">
+        <li>
+          <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+          <strong data-i18n="featured.mod1.title">Visão geral</strong>
+          <span data-i18n="featured.mod1.desc">KPIs de produção e financeiro no mesmo painel.</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+          <strong data-i18n="featured.mod2.title">mvGrafix IA</strong>
+          <span data-i18n="featured.mod2.desc">Leitura da operação: ritmo, funil e o que pede atenção hoje.</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+          <strong data-i18n="featured.mod3.title">Pedidos</strong>
+          <span data-i18n="featured.mod3.desc">Inventário, pipeline, finalizados e novo pedido.</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+          <strong data-i18n="featured.mod4.title">Vendas &amp; BI</strong>
+          <span data-i18n="featured.mod4.desc">Ticket médio, ciclo de recebimento e ranking de clientes.</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-file-invoice" aria-hidden="true"></i>
+          <strong data-i18n="featured.mod5.title">Orçamentos</strong>
+          <span data-i18n="featured.mod5.desc">Conversão em pedido e PDF pronto para o cliente.</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <strong data-i18n="featured.mod6.title">Financeiro</strong>
+          <span data-i18n="featured.mod6.desc">Caixa, recebíveis e notas fiscais com acesso por perfil.</span>
+        </li>
+      </ul>
+      </div>
+      </div>
+      <div class="featured-footer">
+        <button
+          type="button"
+          class="featured-toggle"
+          id="mvgrafix-toggle"
+          aria-expanded="false"
+          aria-controls="mvgrafix-more"
+        >
+          <span class="featured-toggle-more" data-i18n="featured.more">Ver mais</span>
+          <span class="featured-toggle-less" data-i18n="featured.less">Ver menos</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+      </div>
+    </article>
+  </section>
 
   <section id="projetos" class="page-section">
     <h2 class="section-title" data-i18n="projects.web.title">Projetos de <span>Desenvolvimento Web</span></h2>

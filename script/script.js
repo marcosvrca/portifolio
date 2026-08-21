@@ -479,4 +479,17 @@
   }
 
   initTimelineExperience();
+
+  function initFeaturedToggle() {
+    const card = document.querySelector(".featured-project");
+    const btn = document.getElementById("mvgrafix-toggle");
+    if (!card || !btn) return;
+
+    btn.addEventListener("click", () => {
+      const open = card.classList.toggle("is-expanded");
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  }
+
+  initFeaturedToggle();
 })();
