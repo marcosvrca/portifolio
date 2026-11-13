@@ -173,12 +173,13 @@ const i18n = {
 
       stack: {
         title: "🛠️ Stack Principal",
-        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android",
-        data: "<strong>Dados:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks",
-        bi: "<strong>BI:</strong> Power BI, Dashboards em Python",
-        auto: "<strong>Automação:</strong> Power Automate, n8n",
-        vcs: "<strong>Versionamento:</strong> Git, GitHub, GitLab, Gitea",
-        containers: "<strong>Containers:</strong> Docker, OpenShift, Harbor"
+        dev: "Dev",
+        data: "Dados",
+        bi: "BI",
+        pyDash: "Dashboards em Python",
+        auto: "Automação",
+        vcs: "Versionamento",
+        containers: "Containers"
       },
 
       education: {
@@ -368,12 +369,13 @@ const i18n = {
 
       stack: {
         title: "🛠️ Main Stack",
-        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android",
-        data: "<strong>Data:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks",
-        bi: "<strong>BI:</strong> Power BI, Python Dashboards",
-        auto: "<strong>Automation:</strong> Power Automate, n8n",
-        vcs: "<strong>Version Control:</strong> Git, GitHub, GitLab, Gitea",
-        containers: "<strong>Containers:</strong> Docker, OpenShift, Harbor"
+        dev: "Dev",
+        data: "Data",
+        bi: "BI",
+        pyDash: "Python Dashboards",
+        auto: "Automation",
+        vcs: "Version control",
+        containers: "Containers"
       },
 
       education: {

@@ -1583,6 +1583,93 @@ body.timeline-mode .matrix-rain-canvas {
     linear-gradient(168deg, rgba(22, 36, 32, 0.7), rgba(10, 14, 22, 0.96));
 }
 
+.about-card--stack.show:hover {
+  transform: none;
+}
+
+.stack-groups {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.stack-group {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  padding: 0.85rem 0.85rem 0.95rem;
+  background: rgba(6, 10, 16, 0.45);
+}
+
+.stack-group h4 {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.stack-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(54, 243, 114, 0.28);
+  background: rgba(54, 243, 114, 0.05);
+  color: #c8f8dc;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  transition:
+    transform var(--t-fast) var(--ease-out),
+    border-color var(--t-base) var(--ease-soft),
+    color var(--t-base) var(--ease-soft),
+    background var(--t-base) var(--ease-soft),
+    box-shadow var(--t-base) var(--ease-soft);
+}
+
+.about-card--stack.show .stack-chip {
+  animation: chipIn 0.55s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+.stack-chip:hover {
+  transform: translateY(-3px);
+  border-color: rgba(54, 243, 114, 0.75);
+  color: #f3fff7;
+  background: rgba(54, 243, 114, 0.12);
+  box-shadow: 0 0 18px rgba(54, 243, 114, 0.28);
+}
+
+.stack-ico {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: var(--ico) center / contain no-repeat;
+  mask: var(--ico) center / contain no-repeat;
+}
+
+@keyframes chipIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .about-outro {
   margin-top: clamp(1.8rem, 4vw, 2.8rem);
   padding: 1.3rem 1.2rem;
@@ -1614,6 +1701,15 @@ body.timeline-mode .matrix-rain-canvas {
 @media (min-width: 720px) {
   .projects-grid,
   .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-card--stack,
+  .stack-groups {
+    grid-column: 1 / -1;
+  }
+
+  .stack-groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1817,6 +1913,10 @@ body.timeline-mode .matrix-rain-canvas {
   .about-card--hero {
     grid-column: 1 / -1;
   }
+
+  .stack-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1831,6 +1931,7 @@ body.timeline-mode .matrix-rain-canvas {
   .hero-in,
   .reveal,
   .card,
+  .stack-chip,
   .btn,
   .btn::after,
   .project-card .card-media-img,
@@ -1855,6 +1956,7 @@ body.timeline-mode .matrix-rain-canvas {
   }
 
   .card.show:hover,
+  .stack-chip:hover,
   .btn:hover,
   .project-card:hover .card-media-img,
   .featured-shot:hover .featured-browser,

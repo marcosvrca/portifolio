@@ -553,16 +553,68 @@
         </ul>
       </article>
 
-      <article class="card about-card">
+      <article class="card about-card about-card--stack">
         <h3 data-i18n="about.stack.title">🛠️ Stack Principal</h3>
-        <ul>
-          <li data-i18n="about.stack.dev"><strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android</li>
-          <li data-i18n="about.stack.data"><strong>Dados:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks</li>
-          <li data-i18n="about.stack.bi"><strong>BI:</strong> Power BI, Dashboards em Python</li>
-          <li data-i18n="about.stack.auto"><strong>Automação:</strong> Power Automate, n8n</li>
-          <li data-i18n="about.stack.vcs"><strong>Versionamento:</strong> Git, GitHub, GitLab, Gitea</li>
-          <li data-i18n="about.stack.containers"><strong>Containers:</strong> Docker, OpenShift, Harbor</li>
-        </ul>
+        <div class="stack-groups">
+          <section class="stack-group" aria-labelledby="stack-dev">
+            <h4 id="stack-dev" data-i18n="about.stack.dev">Dev</h4>
+            <div class="stack-chips">
+              <span class="stack-chip" style="--i:0"><span class="stack-ico" style="--ico:url('../icons/html5.svg')" aria-hidden="true"></span>HTML</span>
+              <span class="stack-chip" style="--i:1"><span class="stack-ico" style="--ico:url('../icons/css3.svg')" aria-hidden="true"></span>CSS</span>
+              <span class="stack-chip" style="--i:2"><span class="stack-ico" style="--ico:url('../icons/javascript.svg')" aria-hidden="true"></span>JavaScript</span>
+              <span class="stack-chip" style="--i:3"><span class="stack-ico" style="--ico:url('../icons/typescript.svg')" aria-hidden="true"></span>TypeScript</span>
+              <span class="stack-chip" style="--i:4"><span class="stack-ico" style="--ico:url('../icons/react.svg')" aria-hidden="true"></span>React</span>
+              <span class="stack-chip" style="--i:5"><span class="stack-ico" style="--ico:url('../icons/nodedotjs.svg')" aria-hidden="true"></span>Node.js</span>
+              <span class="stack-chip" style="--i:6"><span class="stack-ico" style="--ico:url('../icons/openjdk.svg')" aria-hidden="true"></span>Java</span>
+              <span class="stack-chip" style="--i:7"><span class="stack-ico" style="--ico:url('../icons/springboot.svg')" aria-hidden="true"></span>Spring Boot</span>
+              <span class="stack-chip" style="--i:8"><span class="stack-ico" style="--ico:url('../icons/php.svg')" aria-hidden="true"></span>PHP</span>
+              <span class="stack-chip" style="--i:9"><span class="stack-ico" style="--ico:url('../icons/python.svg')" aria-hidden="true"></span>Python</span>
+              <span class="stack-chip" style="--i:10"><span class="stack-ico" style="--ico:url('../icons/android.svg')" aria-hidden="true"></span>Android</span>
+            </div>
+          </section>
+          <section class="stack-group" aria-labelledby="stack-data">
+            <h4 id="stack-data" data-i18n="about.stack.data">Dados</h4>
+            <div class="stack-chips">
+              <span class="stack-chip" style="--i:1"><span class="stack-ico" style="--ico:url('../icons/python.svg')" aria-hidden="true"></span>Python</span>
+              <span class="stack-chip" style="--i:2"><span class="stack-ico" style="--ico:url('../icons/pandas.svg')" aria-hidden="true"></span>Pandas</span>
+              <span class="stack-chip" style="--i:3"><span class="stack-ico" style="--ico:url('../icons/sql.svg')" aria-hidden="true"></span>SQL</span>
+              <span class="stack-chip" style="--i:4"><span class="stack-ico" style="--ico:url('../icons/mysql.svg')" aria-hidden="true"></span>MySQL</span>
+              <span class="stack-chip" style="--i:5"><span class="stack-ico" style="--ico:url('../icons/postgresql.svg')" aria-hidden="true"></span>PostgreSQL</span>
+              <span class="stack-chip" style="--i:6"><span class="stack-ico" style="--ico:url('../icons/databricks.svg')" aria-hidden="true"></span>Databricks</span>
+            </div>
+          </section>
+          <section class="stack-group" aria-labelledby="stack-bi">
+            <h4 id="stack-bi" data-i18n="about.stack.bi">BI</h4>
+            <div class="stack-chips">
+              <span class="stack-chip" style="--i:2"><span class="stack-ico" style="--ico:url('../icons/powerbi.svg')" aria-hidden="true"></span>Power BI</span>
+              <span class="stack-chip" style="--i:3"><span class="stack-ico" style="--ico:url('../icons/python.svg')" aria-hidden="true"></span><span data-i18n="about.stack.pyDash">Dashboards em Python</span></span>
+            </div>
+          </section>
+          <section class="stack-group" aria-labelledby="stack-auto">
+            <h4 id="stack-auto" data-i18n="about.stack.auto">Automação</h4>
+            <div class="stack-chips">
+              <span class="stack-chip" style="--i:3"><span class="stack-ico" style="--ico:url('../icons/powerautomate.svg')" aria-hidden="true"></span>Power Automate</span>
+              <span class="stack-chip" style="--i:4"><span class="stack-ico" style="--ico:url('../icons/n8n.svg')" aria-hidden="true"></span>n8n</span>
+            </div>
+          </section>
+          <section class="stack-group" aria-labelledby="stack-vcs">
+            <h4 id="stack-vcs" data-i18n="about.stack.vcs">Versionamento</h4>
+            <div class="stack-chips">
+              <span class="stack-chip" style="--i:4"><span class="stack-ico" style="--ico:url('../icons/git.svg')" aria-hidden="true"></span>Git</span>
+              <span class="stack-chip" style="--i:5"><span class="stack-ico" style="--ico:url('../icons/github.svg')" aria-hidden="true"></span>GitHub</span>
+              <span class="stack-chip" style="--i:6"><span class="stack-ico" style="--ico:url('../icons/gitlab.svg')" aria-hidden="true"></span>GitLab</span>
+              <span class="stack-chip" style="--i:7"><span class="stack-ico" style="--ico:url('../icons/gitea.svg')" aria-hidden="true"></span>Gitea</span>
+            </div>
+          </section>
+          <section class="stack-group" aria-labelledby="stack-containers">
+            <h4 id="stack-containers" data-i18n="about.stack.containers">Containers</h4>
+            <div class="stack-chips">
+              <span class="stack-chip" style="--i:5"><span class="stack-ico" style="--ico:url('../icons/docker.svg')" aria-hidden="true"></span>Docker</span>
+              <span class="stack-chip" style="--i:6"><span class="stack-ico" style="--ico:url('../icons/redhatopenshift.svg')" aria-hidden="true"></span>OpenShift</span>
+              <span class="stack-chip" style="--i:7"><span class="stack-ico" style="--ico:url('../icons/harbor.svg')" aria-hidden="true"></span>Harbor</span>
+            </div>
+          </section>
+        </div>
       </article>
 
       <article class="card about-card about-card--hero">
