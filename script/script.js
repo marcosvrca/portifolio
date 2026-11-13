@@ -44,7 +44,7 @@
     { threshold: 0.12 }
   );
 
-  document.querySelectorAll(".card").forEach((el) => revealObserver.observe(el));
+  document.querySelectorAll(".card, .reveal").forEach((el) => revealObserver.observe(el));
 
   function formatRepoTitle(name) {
     return name
@@ -492,4 +492,102 @@
   }
 
   initFeaturedToggle();
+
+  function initChrome() {
+    const header = document.getElementById("site-header");
+    const toggle = document.getElementById("navToggle");
+    const panel = document.getElementById("site-menu");
+    const progress = document.getElementById("scrollProgress");
+    const hudLabel = document.getElementById("hudLabel");
+    const hudFill = document.getElementById("hudFill");
+    const navLinks = panel
+      ? [...panel.querySelectorAll('a[href^="#"]')]
+      : [];
+
+    const checkpoints = [
+      { id: "inicio", pt: "Início", en: "Home" },
+      { id: "mvgrafix", pt: "01 · Destaque", en: "01 · Highlight" },
+      { id: "projetos", pt: "02 · Projetos", en: "02 · Projects" },
+      { id: "projetos-dados", pt: "03 · Dados", en: "03 · Data" },
+      { id: "projetos-github", pt: "04 · GitHub", en: "04 · GitHub" },
+      { id: "curriculo", pt: "05 · Sobre", en: "05 · About" },
+    ];
+
+    function menuLabel(open) {
+      const lang = localStorage.getItem("lang") || "pt";
+      const dict = lang === "en"
+        ? { open: "Open menu", close: "Close menu" }
+        : { open: "Abrir menu", close: "Fechar menu" };
+      const label = document.getElementById("navToggleLabel");
+      if (!label) return;
+      label.textContent = open ? dict.close : dict.open;
+    }
+
+    function setMenu(open) {
+      if (!toggle || !panel) return;
+      toggle.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("nav-open", open);
+      menuLabel(open);
+    }
+
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        setMenu(toggle.getAttribute("aria-expanded") !== "true");
+      });
+    }
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => setMenu(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+        setMenu(false);
+        toggle?.focus();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 900) setMenu(false);
+    });
+
+    document.addEventListener("langChanged", () => {
+      menuLabel(document.body.classList.contains("nav-open"));
+    });
+
+    const sections = checkpoints
+      .map((item) => ({ ...item, el: document.getElementById(item.id) }))
+      .filter((item) => item.el);
+
+    function onScroll() {
+      const scrolled = window.scrollY;
+      header?.classList.toggle("is-scrolled", scrolled > 8);
+
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(1, scrolled / max) : 0;
+      if (progress) progress.style.transform = `scaleX(${ratio})`;
+      if (hudFill) hudFill.style.transform = `scaleY(${Math.max(0.08, ratio)})`;
+
+      if (hudLabel && sections.length) {
+        const lang = localStorage.getItem("lang") || "pt";
+        const mark = scrolled + window.innerHeight * 0.35;
+        let current = sections[0];
+        sections.forEach((section) => {
+          if (section.el.offsetTop <= mark) current = section;
+        });
+        hudLabel.textContent = lang === "en" ? current.en : current.pt;
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href") || "";
+          link.classList.toggle("is-active", href === `#${current.id}`);
+        });
+      }
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("langChanged", onScroll);
+  }
+
+  initChrome();
 })();
