@@ -10,20 +10,21 @@ const i18n = {
     },
 
     header: {
-      badge: "DESENVOLVIMENTO WEB & DADOS",
+      badge: "DESENVOLVEDOR FULL STACK",
+      role: "Desenvolvedor Full Stack",
       title: "Olá, eu sou <span>Marcos Vinícius</span>",
       subtitle:
-        "Analista de TI com foco em Desenvolvimento Web, Automação e Análise de Dados. Crio soluções digitais modernas, dashboards estratégicos e automações inteligentes.",
+        "Desenvolvedor Full Stack. Construo aplicações web de ponta a ponta, do front-end às APIs, e uso automação e dados quando o problema pede indicadores ou integração.",
       btnFeatured: "Ver destaque",
       btnProjects: "Ver Projetos",
       btnResume: "Currículo",
       skip: "Pular para o conteúdo",
       menuOpen: "Abrir menu",
       menuClose: "Fechar menu",
-      focusLabel: "Áreas de foco",
-      focus1: "Desenvolvimento Web",
-      focus2: "Automação",
-      focus3: "Análise de Dados",
+      focusLabel: "Atuação",
+      focus1: "Front-end",
+      focus2: "Back-end",
+      focus3: "Dados e automação",
       focusFeatured: "ERP em produção",
       langLabel: "Mudar para inglês"
     },
@@ -139,12 +140,12 @@ const i18n = {
 
     about: {
       title: "Sobre <span>Mim</span>",
-      lead: "Experiência em desenvolvimento, dados e inteligência de negócio aplicada a problemas reais.",
+      lead: "Desenvolvimento full stack aplicado a problemas reais, com dados e inteligência de negócio quando a decisão precisa de indicadores.",
 
       profile: {
         title: "👨‍💻 Perfil Profissional",
         text:
-          "Sou <strong>Desenvolvedor</strong> com foco em criação de aplicações web, automações e integrações de sistemas. Desenvolvo soluções eficientes, escaláveis e orientadas a negócio, utilizando boas práticas e tecnologias modernas."
+          "Sou <strong>Desenvolvedor Full Stack</strong>. Crio aplicações web, APIs e integrações, e complemento com automações e leitura de dados quando o negócio precisa. Busco soluções eficientes, escaláveis e orientadas a resultado."
       },
 
       dev: {
@@ -173,13 +174,14 @@ const i18n = {
 
       stack: {
         title: "🛠️ Stack Principal",
-        dev: "Dev",
+        back: "Back-end",
+        front: "Front-end",
+        devops: "DevOps e containers",
         data: "Dados",
         bi: "BI",
         pyDash: "Dashboards em Python",
         auto: "Automação",
-        vcs: "Versionamento",
-        containers: "Containers"
+        vcs: "Versionamento"
       },
 
       education: {
@@ -189,7 +191,7 @@ const i18n = {
       },
 
       footer:
-        "Busco oportunidades como desenvolvedor, onde possa criar soluções, automatizar processos e utilizar dados para gerar valor real ao negócio."
+        "Busco oportunidades como desenvolvedor full stack, onde possa criar aplicações, integrar sistemas e usar dados para gerar valor real ao negócio."
     },
 
     footer: {
@@ -206,20 +208,21 @@ const i18n = {
     },
 
     header: {
-      badge: "WEB DEVELOPMENT & DATA",
+      badge: "FULL STACK DEVELOPER",
+      role: "Full Stack Developer",
       title: "Hi, I'm <span>Marcos Vinícius</span>",
       subtitle:
-        "IT Analyst focused on Web Development, Automation and Data Analysis. I build modern digital solutions, strategic dashboards and smart automations.",
+        "Full Stack Developer. I build end-to-end web applications, from the front end to APIs, and use automation and data when the problem needs indicators or integration.",
       btnFeatured: "See featured",
       btnProjects: "View Projects",
       btnResume: "Resume",
       skip: "Skip to content",
       menuOpen: "Open menu",
       menuClose: "Close menu",
-      focusLabel: "Focus areas",
-      focus1: "Web Development",
-      focus2: "Automation",
-      focus3: "Data Analysis",
+      focusLabel: "What I build",
+      focus1: "Front-end",
+      focus2: "Back-end",
+      focus3: "Data and automation",
       focusFeatured: "ERP in production",
       langLabel: "Mudar para português"
     },
@@ -335,12 +338,12 @@ const i18n = {
 
     about: {
       title: "About <span>Me</span>",
-      lead: "Experience across development, data and business intelligence applied to real problems.",
+      lead: "Full-stack development applied to real problems, with data and business intelligence when a decision needs indicators.",
 
       profile: {
         title: "👨‍💻 Professional Profile",
         text:
-          "I am a <strong>Developer</strong> focused on building web applications, automations and system integrations. I develop efficient, scalable and business-oriented solutions using best practices and modern technologies."
+          "I am a <strong>Full Stack Developer</strong>. I build web applications, APIs and integrations, and add automations and data work when the business needs them. I aim for efficient, scalable and outcome-oriented solutions."
       },
 
       dev: {
@@ -369,13 +372,14 @@ const i18n = {
 
       stack: {
         title: "🛠️ Main Stack",
-        dev: "Dev",
+        back: "Back-end",
+        front: "Front-end",
+        devops: "DevOps and containers",
         data: "Data",
         bi: "BI",
         pyDash: "Python Dashboards",
         auto: "Automation",
-        vcs: "Version control",
-        containers: "Containers"
+        vcs: "Version control"
       },
 
       education: {
@@ -385,7 +389,7 @@ const i18n = {
       },
 
       footer:
-        "Looking for opportunities as a developer where I can build solutions, automate processes and use data to generate real business value."
+        "Looking for full stack developer opportunities where I can build applications, integrate systems and use data to create real business value."
     },
 
     footer: {
