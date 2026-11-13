@@ -16,7 +16,16 @@ const i18n = {
         "Analista de TI com foco em Desenvolvimento Web, Automação e Análise de Dados. Crio soluções digitais modernas, dashboards estratégicos e automações inteligentes.",
       btnFeatured: "Ver destaque",
       btnProjects: "Ver Projetos",
-      btnResume: "Currículo"
+      btnResume: "Currículo",
+      skip: "Pular para o conteúdo",
+      menuOpen: "Abrir menu",
+      menuClose: "Fechar menu",
+      focusLabel: "Áreas de foco",
+      focus1: "Desenvolvimento Web",
+      focus2: "Automação",
+      focus3: "Análise de Dados",
+      focusFeatured: "ERP em produção",
+      langLabel: "Mudar para inglês"
     },
 
     featured: {
@@ -164,12 +173,13 @@ const i18n = {
 
       stack: {
         title: "🛠️ Stack Principal",
-        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android",
-        data: "<strong>Dados:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks",
-        bi: "<strong>BI:</strong> Power BI, Dashboards em Python",
-        auto: "<strong>Automação:</strong> Power Automate, n8n",
-        vcs: "<strong>Versionamento:</strong> Git, GitHub, GitLab, Gitea",
-        containers: "<strong>Containers:</strong> Docker, OpenShift, Harbor"
+        dev: "Dev",
+        data: "Dados",
+        bi: "BI",
+        pyDash: "Dashboards em Python",
+        auto: "Automação",
+        vcs: "Versionamento",
+        containers: "Containers"
       },
 
       education: {
@@ -202,7 +212,16 @@ const i18n = {
         "IT Analyst focused on Web Development, Automation and Data Analysis. I build modern digital solutions, strategic dashboards and smart automations.",
       btnFeatured: "See featured",
       btnProjects: "View Projects",
-      btnResume: "Resume"
+      btnResume: "Resume",
+      skip: "Skip to content",
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
+      focusLabel: "Focus areas",
+      focus1: "Web Development",
+      focus2: "Automation",
+      focus3: "Data Analysis",
+      focusFeatured: "ERP in production",
+      langLabel: "Mudar para português"
     },
 
     featured: {
@@ -350,12 +369,13 @@ const i18n = {
 
       stack: {
         title: "🛠️ Main Stack",
-        dev: "<strong>Dev:</strong> HTML, CSS, JavaScript, TypeScript, React, Node.js, Java, Spring Boot, PHP, Python, Android",
-        data: "<strong>Data:</strong> Python, Pandas, SQL, MySQL, PostgreSQL, Databricks",
-        bi: "<strong>BI:</strong> Power BI, Python Dashboards",
-        auto: "<strong>Automation:</strong> Power Automate, n8n",
-        vcs: "<strong>Version Control:</strong> Git, GitHub, GitLab, Gitea",
-        containers: "<strong>Containers:</strong> Docker, OpenShift, Harbor"
+        dev: "Dev",
+        data: "Data",
+        bi: "BI",
+        pyDash: "Python Dashboards",
+        auto: "Automation",
+        vcs: "Version control",
+        containers: "Containers"
       },
 
       education: {
@@ -387,9 +407,13 @@ function applyTranslations() {
     if (value) el.innerHTML = value;
   });
 
-  document.documentElement.lang = currentLang;
-  document.getElementById("langToggle").innerText =
-    currentLang === "pt" ? "EN" : "PT";
+  document.documentElement.lang = currentLang === "pt" ? "pt-BR" : "en";
+  const langBtn = document.getElementById("langToggle");
+  if (langBtn) {
+    langBtn.innerText = currentLang === "pt" ? "EN" : "PT";
+    const label = i18n[currentLang]?.header?.langLabel;
+    if (label) langBtn.setAttribute("aria-label", label);
+  }
 
   document.dispatchEvent(new CustomEvent("langChanged", { detail: { lang: currentLang } }));
 }
